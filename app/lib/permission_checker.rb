@@ -61,6 +61,8 @@ private
       ["rail-accident-investigation-branch"]
     when "countryside_stewardship_grant"
       ["department-for-environment-food-rural-affairs"]
+    when "utiac_decision"
+      ["upper-tribunal-immigration-and-asylum-chamber"]
     when "vehicle_recalls_and_faults_alert"
       ["driver-and-vehicle-standards-agency"]
     end
