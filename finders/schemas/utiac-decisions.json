@@ -490,13 +490,5 @@
       "display_as_result_metadata": true,
       "filterable": true
     },
-    {
-      "key": "publication_date",
-      "name": "Publication date",
-      "type": "date",
-      "preposition": "published on",
-      "display_as_result_metadata": true,
-      "filterable": true
-    }
   ]
 }

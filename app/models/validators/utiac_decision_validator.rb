@@ -14,6 +14,5 @@ class UtiacDecisionValidator < SimpleDelegator
   validates :judges, presence: true
 
   validates :promulgation_date, presence: true, date: true
-  validates :publication_date, presence: true, date: true
   # validates :reported, presence: true, date: true
 end

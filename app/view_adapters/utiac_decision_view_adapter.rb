@@ -4,7 +4,6 @@ class UtiacDecisionViewAdapter < DocumentViewAdapter
     # :country_guidance,
     :judges,
     :promulgation_date,
-    :publication_date,
     # :reported,
   ]
 

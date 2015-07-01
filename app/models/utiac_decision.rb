@@ -6,7 +6,6 @@ class UtiacDecision < DocumentMetadataDecorator
     # :country_guidance,
     :judges,
     :promulgation_date,
-    :publication_date,
     # :reported,
   ]
 end

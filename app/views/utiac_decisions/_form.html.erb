@@ -8,7 +8,6 @@
     <%= f.select :judges, f.object.facet_options(:judges), {}, { class: 'select2', multiple: true, data: {placeholder: 'Select judges'} } %>
 
     <%= f.text_field :promulgation_date, placeholder: '2015-04-23', class: 'form-control' %>
-    <%= f.text_field :publication_date, placeholder: '2015-04-23', class: 'form-control' %>
 
     <%= render partial: "specialist_documents/minor_major_update_fields", locals: { f: f, document: document } %>
 

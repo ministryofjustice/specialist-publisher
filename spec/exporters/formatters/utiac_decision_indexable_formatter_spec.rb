@@ -18,7 +18,6 @@ RSpec.describe UtiacDecisionIndexableFormatter do
       # country_guidance: double,
       judges: double,
       promulgation_date: double,
-      publication_date: double,
       # reported: double,
     )
   }

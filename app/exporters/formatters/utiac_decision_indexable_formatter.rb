@@ -12,7 +12,6 @@ private
       # country_guidance: entity.country_guidance,
       judges: entity.judges,
       promulgation_date: entity.promulgation_date,
-      publication_date: entity.publication_date,
       # reported: entity.reported,
     }
   end
