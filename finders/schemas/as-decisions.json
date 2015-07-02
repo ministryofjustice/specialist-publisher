@@ -1,5 +1,48 @@
 {
   "document_noun": "decision",
   "facets": [
+    {
+      "key": "judges",
+      "name": "Judge",
+      "type": "text",
+      "preposition": "by judge",
+      "display_as_result_metadata": true,
+      "filterable": true,
+      "allowed_values": [
+        {"label": "Alan Ponting", "value": "Alan Ponting"},
+        {"label": "Alison Lock", "value": "Alison Lock"},
+        {"label": "Allan Briddock", "value": "Allan Briddock"},
+        {"label": "Anne-Marie Tootell", "value": "Anne-Marie Tootell"},
+        {"label": "Charlotte Bayati", "value": "Charlotte Bayati"},
+        {"label": "Christopher Rayner", "value": "Christopher Rayner"},
+        {"label": "David Saunders", "value": "David Saunders"},
+        {"label": "Dr E Prince", "value": "Dr E Prince"},
+        {"label": "Evis Samupfonda", "value": "Evis Samupfonda"},
+        {"label": "Fiona Ripley", "value": "Fiona Ripley"},
+        {"label": "Fozia Rizvi", "value": "Fozia Rizvi"},
+        {"label": "Gary Garland", "value": "Gary Garland"},
+        {"label": "Gill Carter", "value": "Gill Carter"},
+        {"label": "Ian Lewis", "value": "Ian Lewis"},
+        {"label": "Jessica Wyman", "value": "Jessica Wyman"},
+        {"label": "Joanna Swaney", "value": "Joanna Swaney"},
+        {"label": "Julie Cornes", "value": "Julie Cornes"},
+        {"label": "Laurence Brass", "value": "Laurence Brass"},
+        {"label": "Margaret Phelan", "value": "Margaret Phelan"},
+        {"label": "Martin Penrose", "value": "Martin Penrose"},
+        {"label": "Noor-Ul Khan", "value": "Noor-Ul Khan"},
+        {"label": "Paulene Gandhi", "value": "Paulene Gandhi"},
+        {"label": "Rafaquat Hussain", "value": "Rafaquat Hussain"},
+        {"label": "Rebecca Owens", "value": "Rebecca Owens"},
+        {"label": "Richard Briden", "value": "Richard Briden"},
+        {"label": "Sally Verity Smith", "value": "Sally Verity Smith"},
+        {"label": "Salma Bashir", "value": "Salma Bashir"},
+        {"label": "Sanjay Lal", "value": "Sanjay Lal"},
+        {"label": "Sarah Breach", "value": "Sarah Breach"},
+        {"label": "Sehba Storey", "value": "Sehba Storey"},
+        {"label": "Sheila Grewal", "value": "Sheila Grewal"},
+        {"label": "Susannah Walker", "value": "Susannah Walker"},
+        {"label": "Victoria Woollen", "value": "Victoria Woollen"}
+      ]
+    }
   ]
 }

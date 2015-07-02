@@ -1,5 +1,7 @@
 class AsDecisionViewAdapter < TribunalDecisionViewAdapter
 
-  define_attributes []
+  define_attributes [
+    :judges,
+  ]
 
 end
