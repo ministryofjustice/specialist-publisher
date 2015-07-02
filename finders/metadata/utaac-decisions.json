@@ -1,0 +1,12 @@
+{
+  "content_id": "e9e7fcff-bb0d-4723-af25-9f78d730f6f8",
+  "base_path": "/utaac-decisions",
+  "format_name": "Upper Tribunal (Administrative Appeals Chamber) decision",
+  "name": "Upper Tribunal (Administrative Appeals Chamber) decisions",
+  "beta": true,
+  "filter": {
+    "document_type": "utaac_decision"
+  },
+  "show_summaries": true,
+  "organisations": ["4c2e325a-2d95-442b-856a-e7fb9f9e3cf8"]
+}

@@ -16,6 +16,11 @@ class ViewAdapterRegistry
       "maib_report" => MaibReportViewAdapter,
       "medical_safety_alert" => MedicalSafetyAlertViewAdapter,
       "raib_report" => RaibReportViewAdapter,
+      "as_decision" => AsDecisionViewAdapter,
+      "eat_decision" => EatDecisionViewAdapter,
+      "et_decision" => EtDecisionViewAdapter,
+      "ftt_decision" => FttDecisionViewAdapter,
+      "utaac_decision" => UtaacDecisionViewAdapter,
       "utiac_decision" => UtiacDecisionViewAdapter,
       "vehicle_recalls_and_faults_alert" => VehicleRecallsAndFaultsAlertViewAdapter,
     }.fetch(type)

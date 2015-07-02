@@ -1,0 +1,2 @@
+class EtDecisionsController < AbstractDocumentsController
+end

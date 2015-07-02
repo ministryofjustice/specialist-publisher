@@ -12,6 +12,11 @@ require "validators/medical_safety_alert_validator"
 require "validators/null_validator"
 require "validators/raib_report_validator"
 require "validators/vehicle_recalls_and_faults_alert_validator"
+require "validators/as_decision_validator"
+require "validators/eat_decision_validator"
+require "validators/et_decision_validator"
+require "validators/ftt_decision_validator"
+require "validators/utaac_decision_validator"
 require "validators/utiac_decision_validator"
 
 require "builders/manual_document_builder"
@@ -26,6 +31,11 @@ require "cma_case"
 require "drug_safety_update"
 require "medical_safety_alert"
 require "international_development_fund"
+require "as_decision"
+require "eat_decision"
+require "et_decision"
+require "ftt_decision"
+require "utaac_decision"
 require "utiac_decision"
 
 class DocumentFactoryRegistry
@@ -173,6 +183,81 @@ class DocumentFactoryRegistry
               SlugGenerator.new(prefix: "vehicle-recalls-faults"),
               *args,
             )
+          )
+        )
+      )
+    }
+  end
+
+  def as_decision_factory
+    ->(*args) {
+      ChangeNoteValidator.new(
+        AsDecisionValidator.new(
+          AsDecision.new(
+            SpecialistDocument.new(
+              SlugGenerator.new(prefix: "as-decisions"),
+              *args,
+            ),
+          )
+        )
+      )
+    }
+  end
+
+  def eat_decision_factory
+    ->(*args) {
+      ChangeNoteValidator.new(
+        EatDecisionValidator.new(
+          EatDecision.new(
+            SpecialistDocument.new(
+              SlugGenerator.new(prefix: "eat-decisions"),
+              *args,
+            ),
+          )
+        )
+      )
+    }
+  end
+
+  def et_decision_factory
+    ->(*args) {
+      ChangeNoteValidator.new(
+        EtDecisionValidator.new(
+          EtDecision.new(
+            SpecialistDocument.new(
+              SlugGenerator.new(prefix: "et-decisions"),
+              *args,
+            ),
+          )
+        )
+      )
+    }
+  end
+
+  def ftt_decision_factory
+    ->(*args) {
+      ChangeNoteValidator.new(
+        FttDecisionValidator.new(
+          FttDecision.new(
+            SpecialistDocument.new(
+              SlugGenerator.new(prefix: "ftt-decisions"),
+              *args,
+            ),
+          )
+        )
+      )
+    }
+  end
+
+  def utaac_decision_factory
+    ->(*args) {
+      ChangeNoteValidator.new(
+        UtaacDecisionValidator.new(
+          UtaacDecision.new(
+            SpecialistDocument.new(
+              SlugGenerator.new(prefix: "utaac-decisions"),
+              *args,
+            ),
           )
         )
       )

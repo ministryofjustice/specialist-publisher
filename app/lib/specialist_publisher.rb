@@ -26,14 +26,19 @@ module SpecialistPublisher
 private
   OBSERVER_MAP = {
     "aaib_report" => AaibReportObserversRegistry,
+    "as_decision" => AsDecisionObserversRegistry,
     "cma_case" => CmaCaseObserversRegistry,
     "countryside_stewardship_grant" => CountrysideStewardshipGrantObserversRegistry,
     "drug_safety_update" => DrugSafetyUpdateObserversRegistry,
+    "eat_decision" => EatDecisionObserversRegistry,
+    "et_decision" => EtDecisionObserversRegistry,
     "esi_fund" => EsiFundObserversRegistry,
+    "ftt_decision" => FttDecisionObserversRegistry,
     "international_development_fund" => InternationalDevelopmentFundObserversRegistry,
     "maib_report" => MaibReportObserversRegistry,
     "medical_safety_alert" => MedicalSafetyAlertObserversRegistry,
     "raib_report" => RaibReportObserversRegistry,
+    "utaac_decision" => UtaacDecisionObserversRegistry,
     "utiac_decision" => UtiacDecisionObserversRegistry,
     "vehicle_recalls_and_faults_alert" => VehicleRecallsAndFaultsAlertObserversRegistry,
   }.freeze

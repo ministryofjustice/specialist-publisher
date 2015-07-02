@@ -123,6 +123,31 @@ SpecialistPublisherWiring ||= DependencyContainer.new do
       get(:validatable_document_factories).vehicle_recalls_and_faults_alert_factory)
   }
 
+  define_factory(:as_decision_builder) {
+    SpecialistDocumentBuilder.new("as_decision",
+      get(:validatable_document_factories).as_decision_factory)
+  }
+
+  define_factory(:eat_decision_builder) {
+    SpecialistDocumentBuilder.new("eat_decision",
+      get(:validatable_document_factories).eat_decision_factory)
+  }
+
+  define_factory(:et_decision_builder) {
+    SpecialistDocumentBuilder.new("et_decision",
+      get(:validatable_document_factories).et_decision_factory)
+  }
+
+  define_factory(:ftt_decision_builder) {
+    SpecialistDocumentBuilder.new("ftt_decision",
+      get(:validatable_document_factories).ftt_decision_factory)
+  }
+
+  define_factory(:utaac_decision_builder) {
+    SpecialistDocumentBuilder.new("utaac_decision",
+      get(:validatable_document_factories).utaac_decision_factory)
+  }
+
   define_factory(:utiac_decision_builder) {
     SpecialistDocumentBuilder.new("utiac_decision",
       get(:validatable_document_factories).utiac_decision_factory)
@@ -299,6 +324,26 @@ SpecialistPublisherWiring ||= DependencyContainer.new do
 
   define_singleton(:raib_report_finder_schema) {
     FinderSchema.new(Rails.root.join("finders/schemas/raib-reports.json"))
+  }
+
+  define_singleton(:as_decision_finder_schema) {
+    FinderSchema.new(Rails.root.join("finders/schemas/as-decisions.json"))
+  }
+
+  define_singleton(:eat_decision_finder_schema) {
+    FinderSchema.new(Rails.root.join("finders/schemas/eat-decisions.json"))
+  }
+
+  define_singleton(:et_decision_finder_schema) {
+    FinderSchema.new(Rails.root.join("finders/schemas/et-decisions.json"))
+  }
+
+  define_singleton(:ftt_decision_finder_schema) {
+    FinderSchema.new(Rails.root.join("finders/schemas/ftt-decisions.json"))
+  }
+
+  define_singleton(:utaac_decision_finder_schema) {
+    FinderSchema.new(Rails.root.join("finders/schemas/utaac-decisions.json"))
   }
 
   define_singleton(:utiac_decision_finder_schema) {

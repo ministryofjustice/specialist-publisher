@@ -1,0 +1,12 @@
+{
+  "content_id": "1ee0f467-728a-43c7-b982-6edcdfc2a302",
+  "base_path": "/eat-decisions",
+  "format_name": "Employment Appeal Tribunal decision",
+  "name": "Employment Appeal Tribunal decisions",
+  "beta": true,
+  "filter": {
+    "document_type": "eat_decision"
+  },
+  "show_summaries": true,
+  "organisations": ["caeb418c-d11c-4352-92e9-47b21289f696"]
+}

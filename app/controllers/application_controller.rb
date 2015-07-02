@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
         document_type: "aaib_report",
         title: "AAIB Reports",
       },
+      "as-decisions" => {
+        document_type: "as_decision",
+        title: "Asylum Support Tribunal Decisions"
+      },
       "cma-cases" => {
         document_type: "cma_case",
         title: "CMA Cases",
@@ -33,6 +37,18 @@ class ApplicationController < ActionController::Base
       "countryside-stewardship-grants" => {
         document_type: "countryside_stewardship_grant",
         title: "Countryside Stewardship Grants",
+      },
+      "eat-decisions" => {
+        document_type: "eat_decision",
+        title: "Employment Appeal Tribunal Decisions"
+      },
+      "et-decisions" => {
+        document_type: "et_decision",
+        title: "Employment Tribunal Decisions"
+      },
+      "ftt-decisions" => {
+        document_type: "ftt_decision",
+        title: "Tax Tribunal Decisions"
       },
       "international-development-funds" => {
         document_type: "international_development_fund",
@@ -57,6 +73,10 @@ class ApplicationController < ActionController::Base
       "raib-reports" => {
         document_type: "raib_report",
         title: "RAIB Reports",
+      },
+      "utaac-decisions" => {
+        document_type: "utaac_decision",
+        title: "UTAAC Decisions"
       },
       "utiac-decisions" => {
         document_type: "utiac_decision",

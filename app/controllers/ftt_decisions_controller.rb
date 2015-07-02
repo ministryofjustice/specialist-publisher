@@ -1,0 +1,2 @@
+class FttDecisionsController < AbstractDocumentsController
+end

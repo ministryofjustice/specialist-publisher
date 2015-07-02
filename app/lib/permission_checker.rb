@@ -40,14 +40,20 @@ private
 
   def owning_organisations_for_format(format)
     case format
-    when "cma_case"
-      ["competition-and-markets-authority"]
     when "aaib_report"
       ["air-accidents-investigation-branch"]
+    when "as-decisions"
+      ["first-tier-tribunal-asylum-support"]
+    when "cma_case"
+      ["competition-and-markets-authority"]
     when "international_development_fund"
       ["department-for-international-development"]
     when "drug_safety_update", "medical_safety_alert"
       ["medicines-and-healthcare-products-regulatory-agency"]
+    when "eat-decisions"
+      ["employment-appeal-tribunal"]
+    when "et-decisions"
+      ["employment-tribunal"]
     when "esi_fund"
       %w(
         department-for-communities-and-local-government
@@ -55,12 +61,16 @@ private
         department-for-environment-food-rural-affairs
         rural-payments-agency
       )
+    when "ftt-decisions"
+      ["first-tier-tribunal-tax"]
     when "maib_report"
       ["marine-accident-investigation-branch"]
     when "raib_report"
       ["rail-accident-investigation-branch"]
     when "countryside_stewardship_grant"
       ["department-for-environment-food-rural-affairs"]
+    when "utaac-decisions"
+      ["upper-tribunal-administrative-appeals-chamber"]
     when "utiac_decision"
       ["upper-tribunal-immigration-and-asylum-chamber"]
     when "vehicle_recalls_and_faults_alert"

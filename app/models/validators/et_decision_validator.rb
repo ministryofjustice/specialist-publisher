@@ -1,0 +1,2 @@
+class EtDecisionValidator < TribunalDecisionValidator
+end

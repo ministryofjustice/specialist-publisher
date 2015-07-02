@@ -1,0 +1,2 @@
+class UtaacDecisionValidator < TribunalDecisionValidator
+end

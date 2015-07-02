@@ -1,0 +1,2 @@
+class AsDecisionsController < AbstractDocumentsController
+end

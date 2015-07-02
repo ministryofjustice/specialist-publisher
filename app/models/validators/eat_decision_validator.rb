@@ -1,0 +1,2 @@
+class EatDecisionValidator < TribunalDecisionValidator
+end

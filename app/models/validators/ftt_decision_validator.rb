@@ -1,0 +1,2 @@
+class FttDecisionValidator < TribunalDecisionValidator
+end

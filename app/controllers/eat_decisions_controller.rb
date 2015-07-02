@@ -1,0 +1,2 @@
+class EatDecisionsController < AbstractDocumentsController
+end

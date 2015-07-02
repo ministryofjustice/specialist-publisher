@@ -1,0 +1,12 @@
+{
+  "content_id": "32da1757-364b-44c1-a527-7bafb4d124d2",
+  "base_path": "/et-decisions",
+  "format_name": "Employment Tribunal decision",
+  "name": "Employment Tribunal decisions",
+  "beta": true,
+  "filter": {
+    "document_type": "et_decision"
+  },
+  "show_summaries": true,
+  "organisations": ["8bb37087-a5a7-4493-8afe-900b36ebc927"]
+}

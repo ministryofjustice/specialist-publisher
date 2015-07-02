@@ -1,0 +1,12 @@
+{
+  "content_id": "a9e55866-c383-4e9e-940d-a29bd257a1da",
+  "base_path": "/ftt-decisions",
+  "format_name": "First-tier Tribunal (Tax) decision",
+  "name": "First-tier Tribunal (Tax) decisions",
+  "beta": true,
+  "filter": {
+    "document_type": "ftt_decision"
+  },
+  "show_summaries": true,
+  "organisations": ["11cd9334-7bad-4f67-a8ee-1680e64c6be1"]
+}
