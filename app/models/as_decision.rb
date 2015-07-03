@@ -4,5 +4,6 @@ class AsDecision < DocumentMetadataDecorator
   set_extra_field_names [
     :category,
     :judges,
+    :landmark,
   ]
 end

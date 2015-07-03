@@ -10,6 +10,7 @@ private
     {
       category: entity.category,
       judges: entity.judges,
+      landmark: entity.landmark,
     }
   end
 

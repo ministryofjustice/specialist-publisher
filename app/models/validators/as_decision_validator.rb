@@ -4,5 +4,6 @@ class AsDecisionValidator < TribunalDecisionValidator
 
   validates :category, presence: true
   validates :judges, presence: true
+  validates :landmark, presence: true
 
 end

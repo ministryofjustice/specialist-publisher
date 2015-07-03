@@ -16,6 +16,7 @@ RSpec.describe AsDecisionIndexableFormatter do
 
       category: double,
       judges: double,
+      landmark: double,
     )
   }
 
