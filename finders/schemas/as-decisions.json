@@ -2,6 +2,27 @@
   "document_noun": "decision",
   "facets": [
     {
+      "key": "category",
+      "name": "Category",
+      "type": "text",
+      "preposition": "categorised as",
+      "display_as_result_metadata": true,
+      "filterable": true,
+      "allowed_values": [
+        {"label": "No Category", "value": "No Category"},
+        {"label": "Asylum Seeker, Definition of", "value": "Asylum Seeker, Definition of"},
+        {"label": "Breach of Conditions by:", "value": "Breach of Conditions by:"},
+        {"label": "European Convention of Human Rights", "value": "European Convention of Human Rights"},
+        {"label": "Financial Assessment", "value": "Financial Assessment"},
+        {"label": "Local Authority Support", "value": "Local Authority Support"},
+        {"label": "Medical Evidence", "value": "Medical Evidence"},
+        {"label": "Practice and Procedure", "value": "Practice and Procedure"},
+        {"label": "Racial Harassment", "value": "Racial Harassment"},
+        {"label": "Social Security Benefits", "value": "Social Security Benefits"},
+        {"label": "Section 4", "value": "Section 4"}
+      ]
+    },
+    {
       "key": "judges",
       "name": "Judge",
       "type": "text",

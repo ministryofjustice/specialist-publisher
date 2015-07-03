@@ -8,6 +8,7 @@ class AsDecisionIndexableFormatter < AbstractSpecialistDocumentIndexableFormatte
 private
   def extra_attributes
     {
+      category: entity.category,
       judges: entity.judges,
     }
   end
