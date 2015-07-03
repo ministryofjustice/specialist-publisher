@@ -15,8 +15,10 @@ RSpec.describe AsDecisionIndexableFormatter do
       minor_update?: false,
 
       category: double,
+      decision_date: double,
       judges: double,
       landmark: double,
+      reference_number: double,
     )
   }
 

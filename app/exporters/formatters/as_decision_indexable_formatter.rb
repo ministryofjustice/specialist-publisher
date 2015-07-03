@@ -9,8 +9,10 @@ private
   def extra_attributes
     {
       category: entity.category,
+      decision_date: entity.decision_date,
       judges: entity.judges,
       landmark: entity.landmark,
+      reference_number: entity.reference_number,
     }
   end
 
