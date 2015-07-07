@@ -15,10 +15,9 @@ RSpec.describe UtiacDecisionIndexableFormatter do
       minor_update?: false,
 
       country: double,
-      # country_guidance: double,
+      categories: double,
       judges: double,
       promulgation_date: double,
-      # reported: double,
     )
   }
 

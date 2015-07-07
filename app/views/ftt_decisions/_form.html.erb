@@ -4,6 +4,9 @@
     <%= render partial: "shared/form_fields", locals: { f: f } %>
     <%= render partial: "shared/form_preview" %>
 
+    <%= f.select :judges, f.object.facet_options(:judges), {}, { class: 'select2', multiple: true, data: {placeholder: 'Select judges'} } %>
+    <%= f.select :categories, f.object.facet_options(:categories), {}, { class: 'select2', multiple: true, data: {placeholder: 'Select categories'} } %>
+
     <%= render partial: "specialist_documents/minor_major_update_fields", locals: { f: f, document: document } %>
 
     <div class="actions">

@@ -1,5 +1,8 @@
 class FttDecisionViewAdapter < TribunalDecisionViewAdapter
 
-  define_attributes []
+  define_attributes [
+    :judges,
+    :categories
+  ]
 
 end

@@ -8,6 +8,8 @@ class FttDecisionIndexableFormatter < AbstractSpecialistDocumentIndexableFormatt
 private
   def extra_attributes
     {
+      judges: entity.judges,
+      categories: entity.categories
     }
   end
 
