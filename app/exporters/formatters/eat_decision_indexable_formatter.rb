@@ -8,6 +8,9 @@ class EatDecisionIndexableFormatter < AbstractSpecialistDocumentIndexableFormatt
 private
   def extra_attributes
     {
+      judges: entity.judges,
+      topic: entity.topic,
+      subtopic: entity.subtopic
     }
   end
 

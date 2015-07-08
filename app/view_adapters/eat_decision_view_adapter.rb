@@ -1,5 +1,9 @@
 class EatDecisionViewAdapter < TribunalDecisionViewAdapter
 
-  define_attributes []
+  define_attributes [
+    :judges,
+    :topic,
+    :subtopic
+  ]
 
 end
