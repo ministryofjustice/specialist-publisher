@@ -1,5 +1,25 @@
 {
   "document_noun": "decision",
   "facets": [
+    {
+    "key": "topic",
+    "name": "Topic",
+    "type": "text",
+    "preposition": "topic of",
+    "display_as_result_metadata": true,
+    "filterable": true,
+    "allowed_values": [
+    ]
+  },
+    {
+    "key": "subtopic",
+    "name": "Subtopic",
+    "type": "text",
+    "preposition": "subtopic of",
+    "display_as_result_metadata": true,
+    "filterable": true,
+    "allowed_values": [
+    ]
+  }
   ]
 }
