@@ -9,7 +9,7 @@ private
   def extra_attributes
     {
       judges: entity.judges,
-      categories: entity.categories
+      category: entity.category
     }
   end
 
