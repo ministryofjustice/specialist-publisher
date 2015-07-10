@@ -9,10 +9,10 @@ private
   def extra_attributes
     {
       country: entity.country,
-      # country_guidance: entity.country_guidance,
+      country_guidance: entity.country_guidance,
+      decision_reported: entity.decision_reported,
       judges: entity.judges,
       promulgation_date: entity.promulgation_date,
-      # reported: entity.reported,
     }
   end
 

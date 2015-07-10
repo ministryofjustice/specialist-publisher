@@ -24,7 +24,7 @@
     },
     {
       "key": "judges",
-      "name": "Judge",
+      "name": "Judges",
       "type": "text",
       "preposition": "by judge",
       "display_as_result_metadata": true,

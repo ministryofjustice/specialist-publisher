@@ -9,6 +9,7 @@
       "display_as_result_metadata": true,
       "filterable": true,
       "allowed_values": [
+        {"label": "No Country", "value": "No Country"},
         {"label": "Afghanistan", "value": "Afghanistan"},
         {"label": "Albania", "value": "Albania"},
         {"label": "Algeria", "value": "Algeria"},
@@ -85,7 +86,6 @@
         {"label": "Nepal", "value": "Nepal"},
         {"label": "Netherlands", "value": "Netherlands"},
         {"label": "Nigeria", "value": "Nigeria"},
-        {"label": "No Country", "value": "No Country"},
         {"label": "North Korea (Democratic People's Rebublic of Korea)", "value": "North Korea (Democratic People's Rebublic of Korea)"},
         {"label": "Not applicable", "value": "Not applicable"},
         {"label": "Pakistan", "value": "Pakistan"},
@@ -129,7 +129,7 @@
     },
     {
       "key": "judges",
-      "name": "Judge",
+      "name": "Judges",
       "type": "text",
       "preposition": "by judge",
       "display_as_result_metadata": true,
@@ -479,6 +479,30 @@
         {"label": "Upper Tribunal Judge Warr", "value": "Upper Tribunal Judge Warr"},
         {"label": "Vice President", "value": "Vice President"},
         {"label": "Vice-President", "value": "Vice-President"}
+      ]
+    },
+    {
+      "key": "country_guidance",
+      "name": "Is country guidance",
+      "type": "text",
+      "preposition": "that is",
+      "display_as_result_metadata": true,
+      "filterable": true,
+      "allowed_values": [
+        {"label": "Not Country Guidance", "value": "Not Country Guidance"},
+        {"label": "Country Guidance", "value": "Country Guidance"}
+      ]
+    },
+    {
+      "key": "decision_reported",
+      "name": "Status of case",
+      "type": "text",
+      "preposition": "that is",
+      "display_as_result_metadata": true,
+      "filterable": true,
+      "allowed_values": [
+        {"label": "Not Reported", "value": "Not Reported"},
+        {"label": "Reported", "value": "Reported"}
       ]
     },
     {

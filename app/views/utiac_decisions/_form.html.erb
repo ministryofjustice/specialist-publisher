@@ -4,8 +4,11 @@
     <%= render partial: "shared/form_fields", locals: { f: f } %>
     <%= render partial: "shared/form_preview" %>
 
+    <%= f.select :country_guidance, f.object.facet_options(:country_guidance), {}, { class: 'form-control' } %>
     <%= f.select :country, f.object.facet_options(:country), {}, { class: 'form-control' } %>
+    <%= f.select :decision_reported, f.object.facet_options(:decision_reported), {}, { class: 'form-control' } %>
     <%= f.select :judges, f.object.facet_options(:judges), {}, { class: 'select2', multiple: true, data: {placeholder: 'Select judges'} } %>
+
 
     <%= f.text_field :promulgation_date, placeholder: '2015-04-23', class: 'form-control' %>
 
