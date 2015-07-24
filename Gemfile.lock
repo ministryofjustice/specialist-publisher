@@ -1,7 +1,7 @@
 PATH
   remote: ../govuk_content_models
   specs:
-    govuk_content_models (28.10.0)
+    govuk_content_models (29.0.0)
       bson_ext
       gds-api-adapters (>= 10.9.0)
       gds-sso (>= 10.0.0)
