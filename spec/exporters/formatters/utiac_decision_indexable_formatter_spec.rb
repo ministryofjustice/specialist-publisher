@@ -8,7 +8,6 @@ RSpec.describe UtiacDecisionIndexableFormatter do
     double(
       :utiac_decision,
       body: double,
-      categories: double,
       country: double,
       country_guidance: double,
       decision_reported: double,
