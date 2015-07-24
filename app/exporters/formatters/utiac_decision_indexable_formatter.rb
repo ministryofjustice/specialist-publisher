@@ -13,6 +13,7 @@ private
       decision_reported: entity.decision_reported,
       judges: entity.judges,
       promulgation_date: entity.promulgation_date,
+      indexable_content: entity.hidden_indexable_content || entity.body
     }
   end
 
