@@ -19,6 +19,7 @@ gem "plek", "1.7.0"
 gem "quiet_assets", "1.0.3"
 gem "rack", "~> 1.4.6" # explicitly requiring patched version re: CVE-2015-3225
 gem "sidekiq", "3.2.1"
+gem "syck"
 gem "unicorn", "4.8.2"
 
 if ENV["GOVSPEAK_DEV"]
@@ -61,6 +62,7 @@ group :test do
   gem "cucumber-rails", "1.4.0", require: false
   gem "launchy"
   gem "factory_girl", "4.3.0"
+  gem 'fuubar'
   gem "database_cleaner", "1.2.0"
   gem "poltergeist", "1.5.0"
   gem "phantomjs", ">= 1.9.7.1"

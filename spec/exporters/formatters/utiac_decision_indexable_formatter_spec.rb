@@ -8,16 +8,17 @@ RSpec.describe UtiacDecisionIndexableFormatter do
     double(
       :utiac_decision,
       body: double,
+      categories: double,
+      country: double,
+      country_guidance: double,
+      decision_reported: double,
+      judges: double,
+      minor_update?: false,
+      promulgation_date: double,
       slug: double,
       summary: double,
       title: double,
       updated_at: double,
-      minor_update?: false,
-
-      country: double,
-      categories: double,
-      judges: double,
-      promulgation_date: double,
     )
   }
 
