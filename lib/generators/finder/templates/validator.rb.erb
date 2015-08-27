@@ -8,7 +8,7 @@ class <%= class_name %>Validator < SimpleDelegator
   validates :title, presence: true
   validates :summary, presence: true
   validates :body, presence: true, safe_html: true
-<% @document_attributes.each do |attribute| %>
+<% (@document_attributes - ['hidden_indexable_content']).each do |attribute| %>
   validates :<%= attribute %>, presence: true<% end %>
 
 end

@@ -7,12 +7,13 @@ RSpec.describe <%= class_name %>IndexableFormatter do
   let(:document) {
     double(
       :<%= name.underscore%>,
-      body: double,
-      slug: double,
+      body: double("body"),
+      slug: "/slug",
       summary: double,
       title: double,
       updated_at: double,
       minor_update?: false,
+      public_updated_at: double,
 <% @document_attributes.each do |attribute| %>
       <%= attribute %>: double,<% end %>
     )
@@ -24,5 +25,19 @@ RSpec.describe <%= class_name %>IndexableFormatter do
 
   it "should have a type of <%= name.underscore%>" do
     expect(formatter.type).to eq("<%= name.underscore%>")
+  end<% if options[:hidden_indexable_content] %>
+
+  context "without hidden_indexable_content" do
+    it "should have body as its indexable_content" do
+      allow(document).to receive(:hidden_indexable_content).and_return(nil)
+      expect(formatter.indexable_attributes[:indexable_content]).to eq(document.body)
+    end
   end
+
+  context "with hidden_indexable_content" do
+    it "should have hidden_indexable_content as its indexable_content" do
+      expect(formatter.indexable_attributes[:indexable_content]).to eq(document.hidden_indexable_content)
+    end
+  end
+<% end %>
 end
