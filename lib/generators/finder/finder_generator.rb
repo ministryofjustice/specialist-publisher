@@ -1,8 +1,8 @@
 module FinderGeneratorHelper
   def self.add_and_sort_hash hash, key, value
     hash = hash.merge(key => value)
-    hash = hash.sort_by { |k,v| k }
-    mappings = hash.map {|k,v| %Q|    "#{k}" => #{v},|}.join("\n")
+    hash = hash.sort_by {|k| k }
+    mappings = hash.map {|k, v| %Q|    "#{k}" => #{v},|}.join("\n")
   end
 
   def self.add_mapping file, key, value, generator, map_name, hash
@@ -17,7 +17,7 @@ module FinderGeneratorHelper
     mapping = %[    "#{key}" => #{value},\n]
     generator.behavior = :invoke # need to do this for gsub_file to work
     generator.gsub_file file, mapping, ""
-    generator.gsub_file file, mapping.sub(",",""), ""
+    generator.gsub_file file, mapping.sub(",", ""), ""
     generator.behavior = :revoke # reset to revoke
   end
 
@@ -68,12 +68,15 @@ class FinderGenerator < Rails::Generators::NamedBase
   class_option :preview_only, desc: "true if only want finder in a preview environment",
       type: :boolean
 
+  class_option :hidden_indexable_content, desc: "true to add non-display field for indexing in rummager",
+      type: :boolean
+
   def setup_allowed_values
-    hash = JSON.parse( File.open("./finders/schemas/#{name.pluralize}.json").read )
+    hash = JSON.parse File.open("./finders/schemas/#{name.pluralize}.json").read
     allowed_values = {}
-    hash['facets'].each do |facet|
-      key = facet['key']
-      allowed_values[key] = facet['allowed_values'] if facet['allowed_values']
+    hash["facets"].each do |facet|
+      key = facet["key"]
+      allowed_values[key] = facet["allowed_values"] if facet["allowed_values"]
     end
     @allowed_values = allowed_values
   end
@@ -82,14 +85,17 @@ class FinderGenerator < Rails::Generators::NamedBase
     @document_attributes = options[:document_attributes].split(",")
     @rummager_types = options[:rummager_types].split(",")
     @placeholders = options[:attribute_placeholders].split(",")
+    if options[:hidden_indexable_content]
+      @document_attributes << "hidden_indexable_content"
+    end
   end
 
   def populate_attribute_labels
-    hash = JSON.parse( File.open("./finders/schemas/#{name.pluralize}.json").read )
+    hash = JSON.parse File.open("./finders/schemas/#{name.pluralize}.json").read
     labels = {}
-    hash['facets'].each do |facet|
-      key = facet['key']
-      labels[key] = facet['name']
+    hash["facets"].each do |facet|
+      key = facet["key"]
+      labels[key] = facet["name"]
     end
     @attribute_labels = labels
   end
@@ -170,10 +176,14 @@ FILE
         end
       when /identifiers\z/
         "    <%= f.select :#{a}, f.object.facet_options(:#{a}), { label: \"#{label}\" }, { class: 'select2', multiple: true, data: { placeholder: '#{placeholder}' } } %>"
-      when 'date'
+      when "date"
         "    <%= f.text_field :#{a}, label: \"#{label}\", placeholder: '#{placeholder}', class: 'form-control' %>"
       else
-        raise "Unknown rummager type: #{type} for: #{a}"
+        if a[/hidden_indexable_content/]
+          "    <%= f.text_area :hidden_indexable_content, class: 'form-control' %>"
+        else
+          raise "Unknown rummager type: #{type} for: #{a}"
+        end
       end
     end
 
@@ -335,7 +345,7 @@ INSERT
 
   def create_schema_in_rummager
     hash = {
-      fields: @document_attributes,
+      fields: [@document_attributes - ["hidden_indexable_content"]],
       allowed_values: @allowed_values
     }
 
@@ -347,16 +357,16 @@ INSERT
     case behavior
     when :invoke
       definitions_file = "../rummager/config/schema/field_definitions.json"
-      hash = JSON.parse( File.open(definitions_file).read )
+      hash = JSON.parse File.open(definitions_file).read
       new_attributes = []
-      @document_attributes.each_with_index do |a,i|
+      @document_attributes.each_with_index do |a, i|
         new_attributes << [a, @rummager_types[i]] unless hash.has_key?(a)
       end
       definitions = {}
       new_attributes.each do |attribute, type|
         definitions[attribute] = { type: type }
       end
-      definitions_json = ",\n  " + JSON.pretty_generate(definitions).sub('{','').chomp('}').strip
+      definitions_json = ",\n  " + JSON.pretty_generate(definitions).sub("{", "").chomp("}").strip
 
       inject_into_file definitions_file, before: "\n}\n" do
         definitions_json

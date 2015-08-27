@@ -7,9 +7,10 @@ class <%= class_name %>IndexableFormatter < AbstractSpecialistDocumentIndexableF
 
 private
   def extra_attributes
-    {<% @document_attributes.each do |attribute| %>
+    {<% (@document_attributes - ['hidden_indexable_content']).each do |attribute| %>
       <%= attribute %>: entity.<%= attribute %>,<% end %>
-    }
+<% if options[:hidden_indexable_content] %>      indexable_content: entity.hidden_indexable_content || entity.body
+<% end %>    }
   end
 
   def organisation_slugs
