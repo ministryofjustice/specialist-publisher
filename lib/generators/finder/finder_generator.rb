@@ -82,11 +82,11 @@ class FinderGenerator < Rails::Generators::NamedBase
   end
 
   def setup_attributes
-    @document_attributes = options[:document_attributes].split(",")
+    @document_attributes = @rummager_attributes = options[:document_attributes].split(",")
     @rummager_types = options[:rummager_types].split(",")
     @placeholders = options[:attribute_placeholders].split(",")
     if options[:hidden_indexable_content]
-      @document_attributes << "hidden_indexable_content"
+      @document_attributes = @document_attributes + ["hidden_indexable_content"]
     end
   end
 
@@ -344,23 +344,36 @@ INSERT
   end
 
   def create_schema_in_rummager
+    fields = @rummager_attributes
+
+    schema_file = "../rummager/config/schema/document_types/#{name.underscore}.json"
+    if File.exist?(schema_file)
+      existing_schema = JSON.parse File.open(schema_file).read
+      if existing_schema['fields'].sort == @rummager_attributes.sort
+        fields = existing_schema['fields']
+      end
+    end
+
     hash = {
-      fields: [@document_attributes - ["hidden_indexable_content"]],
+      fields: fields,
       allowed_values: @allowed_values
     }
 
-    schema_file = "../rummager/config/schema/document_types/#{name.underscore}.json"
-    create_file schema_file, "#{JSON.pretty_generate(hash)}\n"
+    create_file schema_file, "#{JSON.pretty_generate(hash)}\n\n"
   end
 
   def add_to_field_definitions_in_rummager
     case behavior
     when :invoke
       definitions_file = "../rummager/config/schema/field_definitions.json"
-      hash = JSON.parse File.open(definitions_file).read
+      existing_definitions = JSON.parse File.open(definitions_file).read
       new_attributes = []
-      @document_attributes.each_with_index do |a, i|
-        new_attributes << [a, @rummager_types[i]] unless hash.has_key?(a)
+      @rummager_attributes.each_with_index do |a, i|
+        unless existing_definitions.has_key?(a)
+          type = @rummager_types[i]
+          raise "type missing for: #{a}"
+          new_attributes << [a, type]
+        end
       end
       definitions = {}
       new_attributes.each do |attribute, type|
