@@ -88,6 +88,18 @@ class FinderGenerator < Rails::Generators::NamedBase
     if options[:hidden_indexable_content]
       @document_attributes = @document_attributes + ["hidden_indexable_content"]
     end
+
+    @rummager_plus_name_attributes = []
+    @rummager_plus_name_types = {}
+
+    @rummager_attributes.each_with_index do |field, i|
+      @rummager_plus_name_attributes << field
+      if @allowed_values[field]
+        name_field = "#{field}_name"
+        @rummager_plus_name_attributes << name_field
+        @rummager_plus_name_types[name_field] = @rummager_types[i]
+      end
+    end
   end
 
   def populate_attribute_labels
@@ -344,22 +356,19 @@ INSERT
   end
 
   def create_schema_in_rummager
-    fields = @rummager_attributes
+    fields = @rummager_plus_name_attributes
 
     schema_file = "../rummager/config/schema/document_types/#{name.underscore}.json"
     if File.exist?(schema_file)
       existing_schema = JSON.parse File.open(schema_file).read
-      if existing_schema['fields'].sort == @rummager_attributes.sort
+      if existing_schema['fields'].sort == @rummager_plus_name_attributes.sort
         fields = existing_schema['fields']
       end
     end
 
-    hash = {
-      fields: fields,
-      allowed_values: @allowed_values
-    }
+    hash = { fields: fields }
 
-    create_file schema_file, "#{JSON.pretty_generate(hash)}\n\n"
+    create_file schema_file, "#{JSON.pretty_generate(hash)}\n"
   end
 
   def add_to_field_definitions_in_rummager
@@ -367,19 +376,20 @@ INSERT
     when :invoke
       definitions_file = "../rummager/config/schema/field_definitions.json"
       existing_definitions = JSON.parse File.open(definitions_file).read
-      new_attributes = []
-      @rummager_attributes.each_with_index do |a, i|
-        unless existing_definitions.has_key?(a)
+      new_attributes = {}
+      @rummager_attributes.each_with_index do |attribute, i|
+        unless existing_definitions.has_key?(attribute)
           type = @rummager_types[i]
-          raise "type missing for: #{a}"
-          new_attributes << [a, type]
+          raise "type missing for: #{attribute}"
+          new_attributes[attribute] = { type: type }
         end
       end
-      definitions = {}
-      new_attributes.each do |attribute, type|
-        definitions[attribute] = { type: type }
+      (@rummager_plus_name_attributes - @rummager_attributes).each do |attribute|
+        unless existing_definitions.has_key?(attribute)
+          new_attributes[attribute] = { type: @rummager_plus_name_types[attribute] }
+        end
       end
-      definitions_json = ",\n  " + JSON.pretty_generate(definitions).sub("{", "").chomp("}").strip
+      definitions_json = ",\n  " + JSON.pretty_generate(new_attributes).sub("{", "").chomp("}").strip
 
       inject_into_file definitions_file, before: "\n}\n" do
         definitions_json
