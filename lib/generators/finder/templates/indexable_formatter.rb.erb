@@ -8,7 +8,8 @@ class <%= class_name %>IndexableFormatter < AbstractSpecialistDocumentIndexableF
 private
   def extra_attributes
     {<% @rummager_attributes.each do |attribute| %>
-      <%= attribute %>: entity.<%= attribute %>,<% end %>
+      <%= attribute %>: entity.<%= attribute %>,<% if @allowed_values.has_key?(attribute)%>
+      <%= attribute %>_name: expand_value(:<%= attribute %>),<% end %><% end %>
 <% if options[:hidden_indexable_content] %>      indexable_content: entity.hidden_indexable_content || entity.body
 <% end %>    }
   end
