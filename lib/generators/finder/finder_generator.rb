@@ -356,17 +356,9 @@ INSERT
   end
 
   def create_schema_in_rummager
-    fields = @rummager_plus_name_attributes
-
     schema_file = "../rummager/config/schema/document_types/#{name.underscore}.json"
-    if File.exist?(schema_file)
-      existing_schema = JSON.parse File.open(schema_file).read
-      if existing_schema['fields'].sort == @rummager_plus_name_attributes.sort
-        fields = existing_schema['fields']
-      end
-    end
 
-    hash = { fields: fields }
+    hash = { fields: @rummager_plus_name_attributes.sort }
 
     create_file schema_file, "#{JSON.pretty_generate(hash)}\n"
   end
@@ -386,7 +378,7 @@ INSERT
       end
       (@rummager_plus_name_attributes - @rummager_attributes).each do |attribute|
         unless existing_definitions.has_key?(attribute)
-          new_attributes[attribute] = { type: @rummager_plus_name_types[attribute] }
+          new_attributes[attribute] = { type: "searchable_#{@rummager_plus_name_types[attribute]}" }
         end
       end
       definitions_json = ",\n  " + JSON.pretty_generate(new_attributes).sub("{", "").chomp("}").strip
