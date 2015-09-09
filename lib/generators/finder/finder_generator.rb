@@ -311,7 +311,18 @@ INSERT
       )
     end
     if options[:email_filter_by].to_s.size > 0
-      metadata.merge!(email_filter_by: options[:email_filter_by])
+      filter_by = options[:email_filter_by]
+      metadata.merge!(email_filter_by: filter_by)
+      metadata.merge!(
+        email_signup_choice: @allowed_values[filter_by].map do |a|
+          {
+            key: a["value"],
+            radio_button_name: a["label"],
+            topic_name: a["value"].gsub("-", " "),
+            prechecked: false
+          }
+        end
+      )
     end
 
     metadata.merge!(summary: options[:summary]) if options[:summary]
