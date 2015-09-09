@@ -71,6 +71,9 @@ class FinderGenerator < Rails::Generators::NamedBase
   class_option :hidden_indexable_content, desc: "true to add non-display field for indexing in rummager",
       type: :boolean
 
+  class_option :summary, desc: "summary html for finder search page",
+      type: :string
+
   def setup_allowed_values
     hash = JSON.parse File.open("./finders/schemas/#{name.pluralize}.json").read
     allowed_values = {}
@@ -284,6 +287,7 @@ INSERT
       organisations: ["#{options[:organisation_id]}"]
     }
 
+    metadata.merge!(summary: options[:summary]) if options[:summary]
     metadata.merge!(preview_only: true) if options[:preview_only]
 
     metadata_file = "finders/metadata/#{name.pluralize}.json"
