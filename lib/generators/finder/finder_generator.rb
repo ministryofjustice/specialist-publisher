@@ -30,6 +30,10 @@ module FinderGeneratorHelper
     end
   end
 
+  def self.add_optional! key, metadata, options
+    metadata.merge!(key => options[key]) if options[key].to_s.size > 0
+  end
+
 end
 
 class FinderGenerator < Rails::Generators::NamedBase
@@ -73,6 +77,14 @@ class FinderGenerator < Rails::Generators::NamedBase
 
   class_option :summary, desc: "summary html for finder search page",
       type: :string
+  
+  class_option :signup_content_id, desc: "id for signup content", type: :string
+
+  class_option :signup_copy, desc: "copy for email signup explaination", type: :string
+
+  class_option :email_filter_by, desc: "field to filter by for email notifications", type: :string
+
+  class_option :subscription_list_title_prefix, desc: "", type: :string
 
   def setup_allowed_values
     hash = JSON.parse File.open("./finders/schemas/#{name.pluralize}.json").read
@@ -288,6 +300,33 @@ INSERT
     }
 
     metadata.merge!(summary: options[:summary]) if options[:summary]
+    
+    FinderGeneratorHelper::add_optional! :signup_content_id, metadata, options
+    FinderGeneratorHelper::add_optional! :signup_copy, metadata, options
+
+    if options[:subscription_list_title_prefix]
+      metadata.merge!(
+        subscription_list_title_prefix: {
+          singular: "#{options[:subscription_list_title_prefix]}: ",
+          plural: "#{options[:subscription_list_title_prefix].pluralize}: ",
+        }
+      )
+    end
+    if options[:email_filter_by].to_s.size > 0
+      filter_by = options[:email_filter_by]
+      metadata.merge!(email_filter_by: filter_by)
+      metadata.merge!(
+        email_signup_choice: @allowed_values[filter_by].map do |a|
+          {
+            key: a["value"],
+            radio_button_name: a["label"],
+            topic_name: a["value"].gsub("-", " "),
+            prechecked: false
+          }
+        end
+      )
+    end
+    
     metadata.merge!(preview_only: true) if options[:preview_only]
 
     metadata_file = "finders/metadata/#{name.pluralize}.json"
