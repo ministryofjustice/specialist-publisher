@@ -133,7 +133,7 @@ require "document_metadata_decorator"
 
 class #{class_name} < DocumentMetadataDecorator
   set_extra_field_names [
-    #{ @document_attributes.map {|a| ":#{a}"}.join(",\n    ") }
+    #{ @document_attributes.sort.map {|a| ":#{a}"}.join(",\n    ") }
   ]
 end
 FILE

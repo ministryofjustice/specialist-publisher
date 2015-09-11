@@ -14,8 +14,8 @@ RSpec.describe <%= class_name %>IndexableFormatter do
       updated_at: double,
       minor_update?: false,
       public_updated_at: double,
-<% @document_attributes.each_with_index do |attribute, index| %>
-      <%= attribute %>: <% if @rummager_types[index] && @rummager_types[index][/identifiers/] %>[double]<% else %>double<% end %>,<% end %>
+<% @document_attributes.zip(@rummager_types).sort_by(&:first).each do |attribute, type| %>
+      <%= attribute %>: <% if type && type[/identifiers/] %>[double]<% else %>double<% end %>,<% end %>
     )
   }
 

@@ -3,7 +3,7 @@ require "validators/date_validator"
 require "validators/safe_html_validator"
 
 class <%= class_name %>ViewAdapter < DocumentViewAdapter
-  attributes = [<% @document_attributes.each do |attribute| %>
+  attributes = [<% @document_attributes.sort.each do |attribute| %>
     :<%= attribute %>,<% end %>
   ]
 
